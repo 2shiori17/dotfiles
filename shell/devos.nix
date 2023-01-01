@@ -8,15 +8,16 @@
   inherit
     (pkgs)
     agenix
+    alejandra
     cachix
     editorconfig-checker
     mdbook
     nixUnstable
+    nodePackages
+    shfmt
     treefmt
     nvfetcher-bin
     ;
-
-  hooks = import ./hooks;
 
   pkgWithCategory = category: package: {inherit package category;};
   devos = pkgWithCategory "devos";
@@ -25,8 +26,14 @@
 in {
   _file = toString ./.;
 
-  imports = ["${extraModulesPath}/git/hooks.nix"];
-  git = {inherit hooks;};
+  imports = ["${extraModulesPath}/git/hooks.nix" ./hooks];
+
+  packages = [
+    alejandra
+    nodePackages.prettier
+    shfmt
+    editorconfig-checker
+  ];
 
   commands =
     [

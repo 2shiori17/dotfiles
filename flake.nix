@@ -124,8 +124,8 @@
         imports = [(digga.lib.importHosts ./hosts/nixos)];
         hosts = {
           /*
-           set host-specific properties here
-           */
+          set host-specific properties here
+          */
           NixOS = {};
         };
         importables = rec {
@@ -156,8 +156,8 @@
         imports = [(digga.lib.importHosts ./hosts/darwin)];
         hosts = {
           /*
-           set host-specific properties here
-           */
+          set host-specific properties here
+          */
           Mac = {};
         };
         importables = rec {
