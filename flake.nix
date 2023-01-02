@@ -111,7 +111,7 @@
         hostDefaults = {
           system = "x86_64-linux";
           channelName = "nixos";
-          imports = [(digga.lib.importExportableModules ./modules)];
+          imports = [(digga.lib.importExportableModules ./system/modules)];
           modules = [
             {lib.our = self.lib;}
             digga.nixosModules.bootstrapIso
@@ -121,7 +121,7 @@
           ];
         };
 
-        imports = [(digga.lib.importHosts ./hosts/nixos)];
+        imports = [(digga.lib.importHosts ./system/hosts/nixos)];
         hosts = {
           /*
           set host-specific properties here
@@ -130,9 +130,9 @@
         };
         importables = rec {
           profiles =
-            digga.lib.rakeLeaves ./profiles
+            digga.lib.rakeLeaves ./system/profiles
             // {
-              users = digga.lib.rakeLeaves ./users;
+              users = digga.lib.rakeLeaves ./system/users;
             };
           suites = with profiles; rec {
             base = [core.nixos users.nixos users.root];
@@ -144,7 +144,7 @@
         hostDefaults = {
           system = "x86_64-darwin";
           channelName = "nixpkgs-darwin-stable";
-          imports = [(digga.lib.importExportableModules ./modules)];
+          imports = [(digga.lib.importExportableModules ./system/modules)];
           modules = [
             {lib.our = self.lib;}
             digga.darwinModules.nixConfig
@@ -153,7 +153,7 @@
           ];
         };
 
-        imports = [(digga.lib.importHosts ./hosts/darwin)];
+        imports = [(digga.lib.importHosts ./system/hosts/darwin)];
         hosts = {
           /*
           set host-specific properties here
@@ -162,9 +162,9 @@
         };
         importables = rec {
           profiles =
-            digga.lib.rakeLeaves ./profiles
+            digga.lib.rakeLeaves ./system/profiles
             // {
-              users = digga.lib.rakeLeaves ./users;
+              users = digga.lib.rakeLeaves ./system/users;
             };
           suites = with profiles; rec {
             base = [core.darwin users.darwin];
@@ -173,10 +173,10 @@
       };
 
       home = {
-        imports = [(digga.lib.importExportableModules ./users/modules)];
+        imports = [(digga.lib.importExportableModules ./home/modules)];
         modules = [];
         importables = rec {
-          profiles = digga.lib.rakeLeaves ./users/profiles;
+          profiles = digga.lib.rakeLeaves ./home/profiles;
           suites = with profiles; rec {
             base = [direnv git];
           };
