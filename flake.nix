@@ -126,7 +126,7 @@
           /*
           set host-specific properties here
           */
-          NixOS = {};
+          Workstation = {};
         };
         importables = rec {
           profiles =
@@ -135,7 +135,8 @@
               users = digga.lib.rakeLeaves ./system/users;
             };
           suites = with profiles; rec {
-            base = [core.nixos users.nixos users.root];
+            base = [core.nixos users.shiori users.root];
+            gui = [xserver];
           };
         };
       };
@@ -178,7 +179,9 @@
         importables = rec {
           profiles = digga.lib.rakeLeaves ./home/profiles;
           suites = with profiles; rec {
-            base = [direnv git];
+            base = [xdg];
+            dev = [bat direnv exa gh git starship zsh];
+            gui = [xmonad xmobar alacritty xscreensaver trayer];
           };
         };
         users = {
@@ -197,8 +200,8 @@
           # it could just be left to the developer to determine what's
           # appropriate. after all, configuring these hm users is one of the
           # first steps in customizing the template.
-          nixos = {suites, ...}: {imports = suites.base;};
           darwin = {suites, ...}: {imports = suites.base;};
+          shiori = {suites, ...}: {imports = suites.base ++ suites.dev ++ suites.gui;};
         }; # digga.lib.importers.rakeLeaves ./users/hm;
       };
 

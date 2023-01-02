@@ -22,10 +22,6 @@
     ];
 
     darwinConfig = "${self}/lib/compat";
-
-    shellAliases = {
-      nrb = "sudo darwin-rebuild switch --flake";
-    };
   };
 
   nix = {
@@ -44,17 +40,5 @@
 
     # Administrative users on Darwin are part of this group.
     trustedUsers = ["@admin"];
-  };
-
-  programs.bash = {
-    # nix-darwin's shell options are very different from those on nixos. there
-    # is no `promptInit` option, for example. so instead, we throw the prompt
-    # init line into `interactiveShellInit`.
-    #
-    # https://github.com/LnL7/nix-darwin/blob/master/modules/programs/bash/default.nix
-    interactiveShellInit = ''
-      eval "$(${pkgs.starship}/bin/starship init bash)"
-      eval "$(${pkgs.direnv}/bin/direnv hook bash)"
-    '';
   };
 }
