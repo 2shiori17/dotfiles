@@ -14,6 +14,7 @@
     systemPackages = with pkgs; [
       vscode
       google-chrome
+      gnome.seahorse
     ];
     shellAliases = {
       # fix nixos-option for flake compat
@@ -31,4 +32,7 @@
   # Enable sound
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # https://github.com/nix-community/home-manager/issues/1454
+  services.gnome.gnome-keyring.enable = true;
 }

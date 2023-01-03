@@ -3,3 +3,5 @@ result
 doc/index.html
 
 pkgs/_sources/.shake*
+
+*.log
