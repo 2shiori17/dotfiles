@@ -180,8 +180,8 @@
           profiles = digga.lib.rakeLeaves ./home/profiles;
           suites = with profiles; rec {
             base = [xdg];
-            dev = [bat direnv exa gh git starship zsh];
-            gui = [xmonad xmobar alacritty xscreensaver trayer];
+            dev = [bat direnv exa gh git gpg gpg-agent starship zsh];
+            gui = [alacritty trayer xmobar xmonad xscreensaver];
           };
         };
         users = {
