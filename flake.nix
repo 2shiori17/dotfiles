@@ -136,7 +136,7 @@
             };
           suites = with profiles; rec {
             base = [core.nixos users.shiori users.root];
-            gui = [xserver];
+            gui = [fonts xserver];
           };
         };
       };
