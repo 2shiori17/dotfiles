@@ -1,6 +1,6 @@
 {suites, ...}: {
   ### root password is empty by default ###
-  imports = suites.base ++ suites.gnome ++ [./hardware-configuration.nix];
+  imports = suites.base ++ suites.dev ++ suites.gnome ++ [./hardware-configuration.nix];
 
   nixpkgs.config.allowUnfree = true;
 

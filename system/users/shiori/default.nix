@@ -8,7 +8,7 @@
   users.users.shiori = {
     password = "asdf";
     isNormalUser = true;
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "docker"];
     shell = pkgs.zsh;
   };
 }

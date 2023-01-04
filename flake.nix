@@ -136,6 +136,7 @@
             };
           suites = with profiles; rec {
             base = [core.nixos users.shiori users.root fonts];
+            dev = [docker];
             xmonad = [xserver.xmonad];
             gnome = [xserver.gnome];
           };
