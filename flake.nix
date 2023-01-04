@@ -135,8 +135,9 @@
               users = digga.lib.rakeLeaves ./system/users;
             };
           suites = with profiles; rec {
-            base = [core.nixos users.shiori users.root];
-            gui = [fonts xserver];
+            base = [core.nixos users.shiori users.root fonts];
+            xmonad = [xserver.xmonad];
+            gnome = [xserver.gnome];
           };
         };
       };
@@ -201,7 +202,7 @@
           # appropriate. after all, configuring these hm users is one of the
           # first steps in customizing the template.
           darwin = {suites, ...}: {imports = suites.base;};
-          shiori = {suites, ...}: {imports = suites.base ++ suites.dev ++ suites.gui;};
+          shiori = {suites, ...}: {imports = suites.base ++ suites.dev;};
         }; # digga.lib.importers.rakeLeaves ./users/hm;
       };
 
