@@ -2,6 +2,7 @@
 {pkgs, ...}: {
   fonts = {
     enableDefaultFonts = true;
+
     fonts = with pkgs; [
       jetbrains-mono
 

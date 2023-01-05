@@ -1,8 +1,14 @@
-{suites, ...}: {
+{
+  suites,
+  profiles,
+  ...
+}: {
   ### root password is empty by default ###
-  imports = suites.base ++ suites.dev ++ suites.gnome ++ [./hardware-configuration.nix];
-
-  nixpkgs.config.allowUnfree = true;
+  imports =
+    suites.base
+    ++ suites.dev
+    ++ suites.gnome
+    ++ [profiles.users.shiori ./hardware-configuration.nix];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

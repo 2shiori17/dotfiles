@@ -135,8 +135,8 @@
               users = digga.lib.rakeLeaves ./system/users;
             };
           suites = with profiles; rec {
-            base = [core.nixos users.shiori users.root fonts];
-            dev = [docker];
+            base = [core.nixos cachix fonts sound users.root];
+            dev = [docker keyring];
             xmonad = [xserver.xmonad];
             gnome = [xserver.gnome];
           };
@@ -183,7 +183,8 @@
           suites = with profiles; rec {
             base = [xdg];
             dev = [bat direnv exa gh git gpg gpg-agent keybase starship zsh];
-            gui = [alacritty trayer xmobar xmonad xscreensaver];
+            gui = [alacritty chrome vscode];
+            xmonad = [trayer xmobar xmonad xscreensaver];
           };
         };
         users = {
@@ -203,7 +204,7 @@
           # appropriate. after all, configuring these hm users is one of the
           # first steps in customizing the template.
           darwin = {suites, ...}: {imports = suites.base;};
-          shiori = {suites, ...}: {imports = suites.base ++ suites.dev;};
+          shiori = {suites, ...}: {imports = suites.base ++ suites.dev ++ suites.gui;};
         }; # digga.lib.importers.rakeLeaves ./users/hm;
       };
 

@@ -8,9 +8,6 @@
   inherit (lib) fileContents;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in {
-  # Sets nrdxp.cachix.org binary cache which just speeds up some builds
-  imports = [./cachix];
-
   environment = {
     # Selection of sysadmin tools that can come in handy
     systemPackages = with pkgs; [
@@ -32,6 +29,8 @@ in {
       skim
       tealdeer
       whois
+      slack
+      discord
     ];
   };
 
@@ -53,4 +52,6 @@ in {
       fallback = true
     '';
   };
+
+  nixpkgs.config.allowUnfree = true;
 }
