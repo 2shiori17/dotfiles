@@ -139,6 +139,7 @@
             dev = [docker keyring];
             xmonad = [xserver.xmonad];
             gnome = [xserver.gnome];
+            game = [steam];
           };
         };
       };

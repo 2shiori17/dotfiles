@@ -8,6 +8,7 @@
     suites.base
     ++ suites.dev
     ++ suites.gnome
+    ++ suites.game
     ++ [profiles.users.shiori ./hardware-configuration.nix];
 
   boot.loader.systemd-boot.enable = true;
