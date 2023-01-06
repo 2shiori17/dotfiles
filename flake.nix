@@ -136,7 +136,7 @@
             };
           suites = with profiles; rec {
             base = [core.nixos cachix fonts i18n sound users.root];
-            dev = [docker keyring];
+            dev = [docker keyring vbox];
             xmonad = [xserver.xmonad];
             gnome = [xserver.gnome];
             game = [steam];
