@@ -135,7 +135,7 @@
               users = digga.lib.rakeLeaves ./system/users;
             };
           suites = with profiles; rec {
-            base = [core.nixos cachix fonts sound users.root];
+            base = [core.nixos cachix fonts i18n sound users.root];
             dev = [docker keyring];
             xmonad = [xserver.xmonad];
             gnome = [xserver.gnome];
