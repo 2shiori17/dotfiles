@@ -31,6 +31,8 @@ in {
       whois
       slack
       discord
+      kicad
+      unzip
     ];
   };
 
